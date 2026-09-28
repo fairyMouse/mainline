@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #f6f3ec;
+  --surface: #fffdf8;
+  --line: #e6dfd1;
+  --ink: #23271f;
+  --muted: #7a7768;
+  --faint: #a9a494;
+  --accent: #2f5d46;
+  --accent-soft: #e3ece4;
+  --high: #b5532f;
+  --mid: #c79a3b;
+  --low: #a9a494;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #171a16;
+    --surface: #1f231e;
+    --line: #333a31;
+    --ink: #e8e6dd;
+    --muted: #a19e90;
+    --faint: #6e6c61;
+    --accent: #8fc3a2;
+    --accent-soft: #263629;
+    --high: #e0835f;
+    --mid: #d9b467;
+    --low: #6e6c61;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-high: var(--high);
+  --color-mid: var(--mid);
+  --color-low: var(--low);
+  --font-sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+}
+
+input,
+textarea,
+select {
+  background: transparent;
+  outline: none;
+}
