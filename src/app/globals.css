@@ -1,53 +1,57 @@
 @import "tailwindcss";
 
+/*
+ * 设计令牌：方向 A「纸面备忘录」，说明见 docs/design.md。
+ * 墨色分四级：ink 正文、ink-2 次要、ink-3 注释（≥4.5:1）、ink-4 仅用于占位与禁用。
+ * lead 是唯一强调色，只标领先项、翻盘关键和需要处理的提醒。
+ */
 :root {
-  --bg: #f6f3ec;
-  --surface: #fffdf8;
-  --line: #e6dfd1;
-  --ink: #23271f;
-  --muted: #7a7768;
-  --faint: #a9a494;
-  --accent: #2f5d46;
-  --accent-soft: #e3ece4;
-  --high: #b5532f;
-  --mid: #c79a3b;
-  --low: #a9a494;
+  --paper: #f7f3ea;
+  --ink: #1d1b16;
+  --ink-2: #5b574c;
+  --ink-3: #726c5e;
+  --ink-4: #aaa292;
+  --rule: #ddd5c3;
+  --rule-strong: #1d1b16;
+  --lead: #b23a26;
+  --lead-soft: #f1ddd3;
+  --on-lead: #f7f3ea;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #171a16;
-    --surface: #1f231e;
-    --line: #333a31;
-    --ink: #e8e6dd;
-    --muted: #a19e90;
-    --faint: #6e6c61;
-    --accent: #8fc3a2;
-    --accent-soft: #263629;
-    --high: #e0835f;
-    --mid: #d9b467;
-    --low: #6e6c61;
+    --paper: #1a1814;
+    --ink: #ece6d8;
+    --ink-2: #b3ab98;
+    --ink-3: #8f8876;
+    --ink-4: #5d574b;
+    --rule: #3a352b;
+    --rule-strong: #ece6d8;
+    --lead: #e0765f;
+    --lead-soft: #3b231c;
+    --on-lead: #1a1814;
   }
 }
 
 @theme inline {
-  --color-bg: var(--bg);
-  --color-surface: var(--surface);
-  --color-line: var(--line);
+  --color-paper: var(--paper);
   --color-ink: var(--ink);
-  --color-muted: var(--muted);
-  --color-faint: var(--faint);
-  --color-accent: var(--accent);
-  --color-accent-soft: var(--accent-soft);
-  --color-high: var(--high);
-  --color-mid: var(--mid);
-  --color-low: var(--low);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-ink-4: var(--ink-4);
+  --color-rule: var(--rule);
+  --color-rule-strong: var(--rule-strong);
+  --color-lead: var(--lead);
+  --color-lead-soft: var(--lead-soft);
+  --color-on-lead: var(--on-lead);
   --font-sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB",
     "Microsoft YaHei", sans-serif;
+  --font-serif: "Songti SC", "Noto Serif SC", "Source Han Serif SC", "STSong", serif;
+  --font-num: "Iowan Old Style", "Palatino", Georgia, serif;
 }
 
 body {
-  background: var(--bg);
+  background: var(--paper);
   color: var(--ink);
 }
 
@@ -56,4 +60,54 @@ textarea,
 select {
   background: transparent;
   outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--lead);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* 权重滑块：一根细线加一个朱红圆点，禁用时退成灰点 */
+.weight-slider {
+  appearance: none;
+  height: 16px;
+  background: transparent;
+  cursor: pointer;
+}
+.weight-slider::-webkit-slider-runnable-track {
+  height: 1px;
+  background: var(--ink-4);
+}
+.weight-slider::-moz-range-track {
+  height: 1px;
+  background: var(--ink-4);
+}
+.weight-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  margin-top: -5.5px;
+  border-radius: 50%;
+  background: var(--lead);
+  border: 0;
+}
+.weight-slider::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--lead);
+  border: 0;
+}
+.weight-slider:disabled {
+  cursor: default;
+}
+.weight-slider:disabled::-webkit-slider-thumb {
+  background: var(--ink-4);
+}
+.weight-slider:disabled::-moz-range-thumb {
+  background: var(--ink-4);
+}
+.weight-slider:focus-visible {
+  outline-offset: 4px;
 }

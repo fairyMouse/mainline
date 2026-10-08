@@ -12,6 +12,7 @@
 - 技术栈：Next.js 16（App Router、Server Actions）＋ Node 内置 `node:sqlite`，数据在本地 `data/mainline.db`（不入库）。首次启动写入 `src/lib/seed.ts` 的初始数据。
 - 当前阶段只在本机运行，不部署；AI 判断（新想法的层级与优先级建议）后续再接。
 - 界面保持极简：用字号、字重与留白建立层级，避免重复标题和装饰。
+- 视觉方向为「纸面备忘录」，规则、参考与代码位置见 `docs/design.md`；新界面复用 `src/components/ui.tsx` 的部件和 `globals.css` 的令牌，开发时可在 `/materials` 查看。
 - 改动后运行 `pnpm lint` 与 `pnpm exec tsc --noEmit`，UI 在浏览器中实际验收。
 
 <!-- BEGIN:nextjs-agent-rules -->
